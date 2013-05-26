@@ -58,6 +58,7 @@
         <li class="active"><a href="#tab1" data-toggle="tab">Add services</a></li>
         
         <li><a href="#tab2" data-toggle="tab">Remove services</a></li>
+        <li><a href="#tab3" data-toggle="tab">Edit personal information</a></li>
         
     </ul>
     <div class="tab-content">
@@ -142,6 +143,10 @@
                 <button type="submit" class="btn">Remove</button>
             </form>
         </div>
+
+         <div class="tab-pane" id="tab3">
+            <p>asdfadf</p>
+         </div>
 </div>
 
 

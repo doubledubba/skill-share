@@ -8,7 +8,9 @@
 <h1>Welcome!</h1>
 <p>I see you haven't set up your account yet. You've come to the right place.</p>
 {% endif %}
-
+<div class="container">
+<div class="row">
+<div class="span3">
 <h4>Skills I can teach</h4>
 {% if skillsTeach %}
 <ul>
@@ -19,7 +21,9 @@
 {% else %}
 <p>No skills currently assigned!</p>
 {% endif %}
+</div>
 
+<div class="span3">
 <h4>Skills I want to learn</h4>
 {% if skillsLearn %}
 <ul>
@@ -30,10 +34,12 @@
 {% else %}
 <p>No skills currently assigned!</p>
 {% endif %}
+</div>
 
+<div class="span3">
 <h4>Services I can offer</h4>
-<ul>
 {% if servicesOffered %}
+<ul>
 {% for service in servicesOffered %}
 <li> {{ service.name }} </li>
 {% endfor %}
@@ -41,7 +47,9 @@
 {% else %}
 <p>No skills currently assigned!</p>
 {% endif %}
+</div>
 
+<div class="span3">
 <h4>Services I want</h4>
 {% if servicesWanted %}
 <ul>
@@ -52,12 +60,16 @@
 {% else %}
 <p>No skills currently assigned!</p>
 {% endif %}
+</div>
+</div>
+</div>
 
 <div class="tabbable">
     <ul class="nav nav-tabs">
         <li class="active"><a href="#tab1" data-toggle="tab">Add services</a></li>
         
         <li><a href="#tab2" data-toggle="tab">Remove services</a></li>
+        <li><a href="#tab3" data-toggle="tab">Edit personal information</a></li>
         
     </ul>
     <div class="tab-content">
@@ -142,6 +154,10 @@
                 <button type="submit" class="btn">Remove</button>
             </form>
         </div>
+
+         <div class="tab-pane" id="tab3">
+            <p>asdfadf</p>
+         </div>
 </div>
 
 
