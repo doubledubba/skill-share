@@ -24,6 +24,23 @@
             <h3>Add services</h3>
 
             <form method="POST" action="/edit">
+                <div class="row">
+                    <div class="span3"><p>Skill Name</p></div>
+                    <div class="span8"><input type="text" name="name"></div>
+                </div>
+
+                <div class="row">
+                    <div class="span3"><p>Skill Description</p></div>
+                    <div class="span8"><textarea name="description" cols="30" rows="5">test</textarea><br></div>
+                </div>
+                <select name="category"><br>
+                    <option value="skillsTeach">Skills I want to teach</option>
+                    <option value="skillsLearn">Skills I want to learn</option>
+                    <option value="servicesOffered">Services I offer</option>
+                    <option value="servicesWanted">Services I want</option>
+                </select><br>
+                <input type="submit">
+            </form>
         </div>
 
         
@@ -45,7 +62,7 @@
 
             <form method="POST" action="/edit">
                 <input type='hidden' name='csrfmiddlewaretoken' value='{{CSRF_TOKEN}}' />
-                <select name="skillsTeachRemove">
+                <select name="skillsLearn">
                     {% for service in skillsLearn %}
                     <option value="{{ service.pk }}">{{ service.name }}</option>
                     {% endfor %}
@@ -57,7 +74,7 @@
 
             <form method="POST" action="/edit">
                 <input type='hidden' name='csrfmiddlewaretoken' value='{{CSRF_TOKEN}}' />
-                <select name="skillsTeachRemove">
+                <select name="servicesOffered">
                     {% for service in servicesOffered %}
                     <option value="{{ service.pk }}">{{ service.name }}</option>
                     {% endfor %}
@@ -69,7 +86,7 @@
 
             <form method="POST" action="/edit">
                 <input type='hidden' name='csrfmiddlewaretoken' value='{{CSRF_TOKEN}}' />
-                <select name="skillsTeachRemove">
+                <select name="servicesWanted">
                     {% for service in servicesWanted %}
                     <option value="{{ service.pk }}">{{ service.name }}</option>
                     {% endfor %}

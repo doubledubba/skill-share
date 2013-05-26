@@ -46,8 +46,13 @@ from django.views.decorators.csrf import csrf_exempt
 from main.models import Service, UserProfile
 
 def home(request):
-    if request.user.is_authenticated and request.user.get_profile().isGreen():
-        return HttpResponse('hey greeny')
+    user = request.user
+    if user.is_anonymous:
+        return render(request, 'home.html')
+    else:
+        user = user.get_profile()
+        if user.isGreen():
+            return HttpResponse('hey greeny')
     return render(request, 'home.html')
 
 def profile_view(request, uid):
@@ -88,14 +93,16 @@ def edit_view(request):
 
     if request.method == 'POST' and not anonymous:
         params['data'] = request.POST
-        if 'skillsTeach' in request.POST:
-            skillsTeach = request.POST['skillsTeach']
-        if 'skillsLearn' in request.POST:
-            skillsLearn = request.POST['skillsLearn']
-        if 'servicesOffered' in request.POST:
-            servicesOffered = request.POST['servicesOffered']
-        if 'servicesWanted' in request.POST:
-            servicesWanted = request.POST['servicesWanted']
+        if 'name' in request.POST and 'description' in request.POST and 'category' in request.POST:
+            name = request.POST['name']
+            description = request.POST['description']
+            category = request.POST['category']
+            service = Service()
+            service.name = name
+            service.description = description
+            service.category = category
+            service.save()
+            user.addPK(category, service.pk)
 
         if 'skillsTeachRemove' in request.POST:
             pk = request.POST['skillsTeachRemove']

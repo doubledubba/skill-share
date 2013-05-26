@@ -18,6 +18,7 @@ class Service(models.Model):
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     skillsTeach = models.CommaSeparatedIntegerField(max_length=255, null=True, blank=True)
+
     skillsLearn = models.CommaSeparatedIntegerField(max_length=255, null=True, blank=True)
     servicesOffered = models.CommaSeparatedIntegerField(max_length=255, null=True, blank=True)
     servicesWanted = models.CommaSeparatedIntegerField(max_length=255, null=True, blank=True)
@@ -35,6 +36,8 @@ class UserProfile(models.Model):
 
     def decode(self, field):
         pks = []
+        if not field or hasattr(field, 'real'):
+            return []
         for pk in field.split(','):
             if pk:
                 pks.append(int(pk))

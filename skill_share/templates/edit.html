@@ -24,6 +24,29 @@
             <h3>Add services</h3>
 
             <form method="POST" action="/edit">
+                <div class="row">
+                    <div class="span3"><p>Skill Name</p></div>
+                    <div class="span8"><input type="text" name="name"></div>
+                </div>
+
+                <div class="row">
+                    <div class="span3"><p>Skill Description</p></div>
+                    <div class="span8"><textarea name="description" cols="30" rows="5">test</textarea></div>
+                </div>
+
+                <div class="row">
+                    <div class="span3"><p>Category</p></div>
+                    <div class="span8">
+                    <select name="category"><br>
+                        <option value="skillsTeach">Skills I want to teach</option>
+                        <option value="skillsLearn">Skills I want to learn</option>
+                        <option value="servicesOffered">Services I offer</option>
+                        <option value="servicesWanted">Services I want</option>
+                    </select>
+                    </div>
+                </div>
+                <input type="submit">
+            </form>
         </div>
 
         
