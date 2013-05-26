@@ -2,6 +2,8 @@ import re
 from datetime import datetime
 
 from django.db.models import Q
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render_to_response
 
 def normalize_query(query_string,
                     findterms=re.compile(r'"([^"]+)"|(\S+)').findall,
@@ -39,7 +41,7 @@ def get_query(query_string, search_fields):
 
 
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.csrf import csrf_exempt
 from main.models import Service, UserProfile
 
@@ -97,3 +99,28 @@ def edit_view(request):
 def service_view(request, sid):
     params = {'service': Service.objects.get(pk=sid)}
     return render(request, 'service.html', params)
+
+@csrf_exempt
+def login_view(request):
+    state = "Please log in below..."
+    username = password = ''
+    if request.POST:
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                state = "You're successfully logged in!"
+                return redirect('/')
+            else:
+                state = "Your account is not active, please contact the site admin."
+        else:
+            state = "Your username and/or password were incorrect."
+
+    return render(request, 'auth.html',{'state':state, 'username': username})
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')

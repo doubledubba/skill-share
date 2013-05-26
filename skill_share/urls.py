@@ -9,6 +9,8 @@ urlpatterns = patterns('main.views',
     url(r'^search$', 'search_view'),
     url(r'^edit$', 'edit_view'),
     url(r'^service/(?P<sid>\d+)/$', 'service_view'),
+    url(r'^login/$', 'login_view'),
+    url(r'^logout/$', 'logout_view'),
 
     url(r'^admin/', include(admin.site.urls)),
 )

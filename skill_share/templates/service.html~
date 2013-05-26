@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Skill Share{% endblock title %}
+
+{% block body %}
+
+<h2>
+<span style="color:#FF0000">{{ service.category }}</span>
+{{ service.name }}</h2>
+<h4>Description</h4>
+{{ service.description }}
+<h4>Fulfilled?</h4>
+{{ service.fulfilled }}
+{% endblock body %}
