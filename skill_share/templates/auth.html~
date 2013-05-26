@@ -4,16 +4,17 @@
 
 {% block body %}
 		<div class="row">
-				<div class="span6" align="right"><p>New Account</p></div>
-				<div class="span6" align="lift"><p>Sign In</p></div>
+				<div class="span6" align="right"><p><b>New Account</b></p></div>
+				<div class="span6" align="lift"><p><b>Sign In</b></p></div>
 			</div>
 			<div class="row">
 				<div class="span6" align="right">
-					<form>
-					  New Username: <input type="text" name="newusername"><br>
-					  Password: <input type="text" name="newpassword"><br>
-					  Confirm password: <input type="text" name="passcheck"><br>
+					<form action="/register/" method="post">
                       Email: <input type="text" name="email"><br>
+					  Password: <input type="password" name="newpassword"><br>
+					  Confirm password: <input type="password" name="passcheck"><br>
+                      First Name <input type="text" name="first"><br>
+                      Last Name <input type="text" name="last"><br>
                       State: <input type="text" name="state"><br>
                       City: <input type="text" name="city"><br>
                       Phone: <input type="text" name="phone"><br>

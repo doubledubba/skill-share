@@ -82,6 +82,8 @@ def search_view(request):
 def edit_view(request):
     params = {}
     anonymous = request.user.is_anonymous()
+    if anonymous:
+        return redirect('/')
     user = request.user.get_profile()
 
     if request.method == 'POST' and not anonymous:
@@ -160,3 +162,30 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('/')
+
+from django.contrib.auth.models import User
+
+@csrf_exempt
+def register_view(request):
+    password = request.POST.get('newpassword')
+    if password != request.POST.get('passcheck'):
+        password = None
+        return HttpResponse('passwords dont match! auth failed!')
+    user = User()
+    user.email = request.POST.get('email')
+    user.username = user.email
+    user.set_password(password)
+    user.first_name = request.POST.get('first')
+    user.last_name = request.POST.get('last')
+    user.save()
+    
+    userProfile = UserProfile()
+    userProfile.user = user
+    userProfile.state = request.POST.get('state')
+    userProfile.city = request.POST.get('city')
+    userProfile.phone = request.POST.get('phone')
+    userProfile.save()
+
+
+    return redirect('/')
+
