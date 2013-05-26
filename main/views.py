@@ -114,6 +114,16 @@ def edit_view(request):
             service = Service.objects.get(pk=pk)
             service.delete()
 
+        if 'city' in request.POST:
+            user.city = request.POST['city']
+            user.save()
+        if 'state' in request.POST:
+            user.state = request.POST['state']
+            user.save()
+        if 'phone' in request.POST:
+            user.phone = request.POST['phone']
+            user.save()
+
     params['skillsTeach'] = user.getObjects(user.skillsTeach)
     params['skillsLearn'] = user.getObjects(user.skillsLearn)
     params['servicesOffered'] = user.getObjects(user.servicesOffered)
@@ -128,6 +138,8 @@ def service_view(request, sid):
 def login_view(request):
     state = "Please log in below..."
     username = password = ''
+    if request.user.is_authenticated():
+        return redirect('/')
     if request.POST:
         username = request.POST.get('username')
         password = request.POST.get('password')

@@ -3,5 +3,33 @@
 {% block title %}Skill Share{% endblock title %}
 
 {% block body %}
-
+		<div class="row">
+				<div class="span6" align="right"><p>New Account</p></div>
+				<div class="span6" align="lift"><p>Sign In</p></div>
+			</div>
+			<div class="row">
+				<div class="span6" align="right">
+					<form>
+					  New Username: <input type="text" name="newusername"><br>
+					  Password: <input type="text" name="newpassword"><br>
+					  Confirm password: <input type="text" name="passcheck"><br>
+                      Email: <input type="text" name="email"><br>
+                      State: <input type="text" name="state"><br>
+                      City: <input type="text" name="city"><br>
+                      Phone: <input type="text" name="phone"><br>
+					  <input type="submit" value="Generate">
+					</form>					
+				</div>
+				<div class="span6">
+                    <span style="color:#FF0000">{{ state }}</span>
+					<form action="/login/" method="post">
+                      {% if next %}
+                      <input type="hidden" name="next" value="{{ next }}" />
+                      {% endif %}
+					  Username: <input type="text" name="username" value="{{ username }}"><br>
+					  Password: <input type="text" name="password" value="" ><br>
+					  <input type="submit" value="Log In">
+					</form>					
+				</div>
+			</div>
 {% endblock body %}

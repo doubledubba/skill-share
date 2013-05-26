@@ -8,7 +8,9 @@
 <h1>Welcome!</h1>
 <p>I see you haven't set up your account yet. You've come to the right place.</p>
 {% endif %}
-
+<div class="container">
+<div class="row">
+<div class="span3">
 <h4>Skills I can teach</h4>
 {% if skillsTeach %}
 <ul>
@@ -19,7 +21,9 @@
 {% else %}
 <p>No skills currently assigned!</p>
 {% endif %}
+</div>
 
+<div class="span3">
 <h4>Skills I want to learn</h4>
 {% if skillsLearn %}
 <ul>
@@ -30,7 +34,9 @@
 {% else %}
 <p>No skills currently assigned!</p>
 {% endif %}
+</div>
 
+<div class="span3">
 <h4>Services I can offer</h4>
 {% if servicesOffered %}
 <ul>
@@ -41,7 +47,9 @@
 {% else %}
 <p>No skills currently assigned!</p>
 {% endif %}
+</div>
 
+<div class="span3">
 <h4>Services I want</h4>
 {% if servicesWanted %}
 <ul>
@@ -52,6 +60,9 @@
 {% else %}
 <p>No skills currently assigned!</p>
 {% endif %}
+</div>
+</div>
+</div>
 
 <div class="tabbable">
     <ul class="nav nav-tabs">
@@ -145,7 +156,12 @@
         </div>
 
          <div class="tab-pane" id="tab3">
-            <p>asdfadf</p>
+            <form method="POST" action="/edit">
+                <input type="text" name="city" value="{{ cityVal }}"><br>
+                <input type="text" name="state" value="{{ stateVal }}"><br>
+                <input type="text" name="phone" value="{{ phoneVal }}"><br>
+                <input type="submit">
+            </form>
          </div>
 </div>
 
