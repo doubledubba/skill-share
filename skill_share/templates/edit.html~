@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Skill Share{% endblock title %}
+
+{% block body %}
+<h1>Welcome!</h1>
+<p>You can edit stuff here</p>
+
+<form action="/edit" method="post">
+  Search: <input type="text" name="skillsTeach"><br>
+  <input type="submit" value="Submit">
+</form>
+
+<form action="/edit" method="post">
+  Search: <input type="text" name="skillsLearn"><br>
+  <input type="submit" value="Submit">
+</form>
+
+<form action="/edit" method="post">
+  Search: <input type="text" name="servicesOffered"><br>
+  <input type="submit" value="Submit">
+</form>
+
+<form action="/edit" method="post">
+  Search: <input type="text" name="servicesWanted"><br>
+  <input type="submit" value="Submit">
+</form>
+{% endblock body %}
