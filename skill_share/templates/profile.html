@@ -8,43 +8,43 @@
 	          <img src="/static/img/profilepicplaceholder.png" width="100" alt="cat.gif">
 	        </div>
 	        <div class="span9">
-	        	<h3>{{ user.get_full_name }}</h3>
+	        	<h3>{{ userer }}</h3>
 	        </div>
 	       </div>
 
 	       <div class="row">
 	       	<div class="span3">
-	          <p>{{ user.get_profile.city }}</p>
-	          <p>{{ user.get_profile.phone }}</p>
-	          <p>{{ user.email }}</p>
+	          <p>{{ userer.city }}</p>
+	          <p>{{ userer.phone }}</p>
+	          <p>{{ userer.user.email }}</p>
 	        </div>   
 
 	        <div class="span9">
 	          <p><b>Willing to teach</b></p>
                 <ul>
                 {% for service in skillsTeach %}
-                <li>{{ service }}</li>
+                <li>{{ service }} : {{ service.description }}</li>
                 {% endfor %}
                 </ul>
 
 	          <p><b>Want to learn</b></p>
 	          	<ul>
                 {% for service in skillsLearn %}
-	          		<li>{{ service }}</li>
+	          		<li>{{ service }} : {{ service.description }}</li>
                 {% endfor %}
 	          	</ul>
 
 	          <p><b>Services offered</b></p>
                 <ul>
                 {% for service in servicesOffered %}
-	          		<li>{{ service }}</li>
+	          		<li>{{ service }} : {{ service.description }}</li>
                 {% endfor %}
 	          	</ul>	    
       
 	          <p><b>Services wanted</b></p>
 	          	<ul>
                 {% for service in servicesWanted %}
-	          		<li>{{ service }}</li>
+	          		<li>{{ service }} : {{ service.description }}</li>
                 {% endfor %}
 	          	</ul>	          
 	        </div>

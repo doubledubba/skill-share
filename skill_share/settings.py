@@ -4,6 +4,8 @@ import os
 PROJECT_ROOT = os.path.dirname(__file__)
 AUTH_PROFILE_MODULE = 'main.UserProfile'
 
+MEDIA = os.path.join(PROJECT_ROOT, 'media')
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 

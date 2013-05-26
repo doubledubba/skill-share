@@ -131,6 +131,7 @@
             </form>
 
 
+            
             <form method="POST" action="/edit">
                 <input type='hidden' name='csrfmiddlewaretoken' value='{{CSRF_TOKEN}}' />
                 <select name="servicesOffered">
@@ -157,9 +158,9 @@
 
          <div class="tab-pane" id="tab3">
             <form method="POST" action="/edit">
-                <input type="text" name="city" value="{{ cityVal }}"><br>
-                <input type="text" name="state" value="{{ stateVal }}"><br>
-                <input type="text" name="phone" value="{{ phoneVal }}"><br>
+                <p>City</p><input type="text" name="city" value="{{ user.get_profile.city }}"><br>
+                <p>State</p><input type="text" name="state" value="{{ user.get_profile.state }}"><br>
+                <p>Phone </p><input type="text" name="phone" value="{{ user.get_profile.phone }}"><br>
                 <input type="submit">
             </form>
          </div>

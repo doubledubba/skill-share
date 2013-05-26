@@ -3,14 +3,25 @@
 {% block title %}Skill Share{% endblock title %}
 
 {% block body %}
-<h3>Found {{ n }} results in {{ latency }} seconds</h3>
+<h5>Found {{ n }} results in {{ latency }} seconds</h5>
 
-<hr size=20 noshade="noshade">
-{% for entry in results %}
-<a href="{{ entry.get_absolute_url }}">
-{{entry}}
-</a> {{ entry.description }}
-<hr size=10 noshade="noshade">
-{%endfor%}
-
+<table class="table table-bordered">
+    <thead>
+        <tr class="successs">
+            <th>Name</th>
+            <th>Title</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entry in results %}
+        <tr>
+            <td><a href="/profile/{{ entry.owner.user.pk }}">{{ entry.owner.user.get_full_name }}</a></td>
+            <td>{{ entry.name }}</td>
+            <td>{{ entry.category }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock body %}
+

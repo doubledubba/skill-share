@@ -6,6 +6,7 @@ class Service(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     category = models.CharField(max_length=255)
+    owner = models.ForeignKey('UserProfile')
 
     def __unicode__(self):
         return self.name
@@ -25,6 +26,9 @@ class UserProfile(models.Model):
     city = models.CharField(max_length=80)
     state = models.CharField(max_length=80)
     phone = models.CharField(max_length=11)
+
+    def get_absolute_url(self):
+        return '/profile/%d' % self.pk
 
     def __unicode__(self):
         return self.user.username
