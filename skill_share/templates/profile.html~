@@ -44,7 +44,7 @@
 	          <p><b>Services wanted</b></p>
 	          	<ul>
                 {% for service in servicesWanted %}
-	          		<li>{{ service }}</li>
+	          		<li>{{ service }} : {{ service.description }}</li>
                 {% endfor %}
 	          	</ul>	          
 	        </div>

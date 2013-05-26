@@ -56,7 +56,7 @@ def profile_view(request, uid):
     params['skillsLearn'] = user.getObjects(user.skillsLearn)
     params['servicesOffered'] = user.getObjects(user.servicesOffered)
     params['servicesWanted'] = user.getObjects(user.servicesWanted)
-    params['userer'] = 'asdf'
+    params['userer'] = user
     return render(request, 'profile.html', params)
 
 

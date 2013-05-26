@@ -16,7 +16,7 @@
     <tbody>
         {% for entry in results %}
         <tr>
-            <td>{{ entry.owner.user.get_full_name }}</td>
+            <td><a href="/profile/{{ entry.owner.user.pk }}">{{ entry.owner.user.get_full_name }}</a></td>
             <td>{{ entry.name }}</td>
             <td>{{ entry.category }}</td>
         </tr>

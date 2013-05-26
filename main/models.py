@@ -14,6 +14,18 @@ class Service(models.Model):
     def get_absolute_url(self):
         return '/service/%d' % self.pk
 
+    def get_category(self):
+        cat = self.category
+        rev = ''
+        if cat == 'skillsLearn':
+            rev = 'Skill I want to learn'
+        elif cat == 'skillsTeach':
+            rev = 'Skill I want to teach'
+        elif cat == 'serviceOffered':
+            rev = 'Service I can offer'
+        elif cat == 'serviceWanted':
+            rev = 'Service I want'
+        return rev
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
