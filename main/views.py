@@ -189,3 +189,24 @@ def register_view(request):
 
     return redirect('/')
 
+from django import forms
+
+class UploadFileForm(forms.Form):
+    title = forms.CharField(max_length=50)
+    file  = forms.FileField()
+
+from django.http import HttpResponseRedirect
+from django.shortcuts import render_to_response
+from .forms import UploadFileForm
+
+# Imaginary function to handle an uploaded file.
+
+def upload_file(request):
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            handle_uploaded_file(request.FILES['file'])
+            return HttpResponseRedirect('/profile/%d' % request.user.pk)
+    else:
+        form = UploadFileForm()
+    return render_to_response('upload.html', {'form': form})
