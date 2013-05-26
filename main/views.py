@@ -46,13 +46,7 @@ from django.views.decorators.csrf import csrf_exempt
 from main.models import Service, UserProfile
 
 def home(request):
-    user = request.user
-    if user.is_anonymous:
-        return render(request, 'home.html')
-    else:
-        user = user.get_profile()
-        if user.isGreen():
-            return HttpResponse('hey greeny')
+
     return render(request, 'home.html')
 
 def profile_view(request, uid):
@@ -89,7 +83,6 @@ def edit_view(request):
     params = {}
     anonymous = request.user.is_anonymous()
     user = request.user.get_profile()
-    params['anonymous'] = anonymous
 
     if request.method == 'POST' and not anonymous:
         params['data'] = request.POST

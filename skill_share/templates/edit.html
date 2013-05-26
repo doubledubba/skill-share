@@ -9,14 +9,55 @@
 <p>I see you haven't set up your account yet. You've come to the right place.</p>
 {% endif %}
 
+<h4>Skills I can teach</h4>
+{% if skillsTeach %}
+<ul>
+{% for service in skillsTeach %}
+<li> {{ service.name }} </li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No skills currently assigned!</p>
+{% endif %}
+
+<h4>Skills I want to learn</h4>
+{% if skillsLearn %}
+<ul>
+{% for service in skillsLearn %}
+<li> {{ service.name }} </li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No skills currently assigned!</p>
+{% endif %}
+
+<h4>Services I can offer</h4>
+<ul>
+{% if servicesOffered %}
+{% for service in servicesOffered %}
+<li> {{ service.name }} </li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No skills currently assigned!</p>
+{% endif %}
+
+<h4>Services I want</h4>
+{% if servicesWanted %}
+<ul>
+{% for service in servicesWanted %}
+<li> {{ service.name }} </li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No skills currently assigned!</p>
+{% endif %}
 
 <div class="tabbable">
     <ul class="nav nav-tabs">
         <li class="active"><a href="#tab1" data-toggle="tab">Add services</a></li>
         
         <li><a href="#tab2" data-toggle="tab">Remove services</a></li>
-        
-        
         
     </ul>
     <div class="tab-content">
@@ -31,7 +72,7 @@
 
                 <div class="row">
                     <div class="span3"><p>Skill Description</p></div>
-                    <div class="span8"><textarea name="description" cols="30" rows="5">test</textarea></div>
+                    <div class="span8"><textarea name="description" cols="30" rows="5"></textarea></div>
                 </div>
 
                 <div class="row">
@@ -100,6 +141,9 @@
                 <br/>
                 <button type="submit" class="btn">Remove</button>
             </form>
+        </div>
+</div>
+
 
          
         </div>

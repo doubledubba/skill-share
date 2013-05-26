@@ -15,8 +15,8 @@
 	       <div class="row">
 	       	<div class="span3">
 	          <p>Seattle, WA</p>
-	          <p>206-HEY-DUDE</p>
-	          <p>heydude@cats.com</p>
+	          <p>{{ user.get_profile.phone }}</p>
+	          <p>{{ user.email }}</p>
 	        </div>   
 
 	        <div class="span9">
@@ -35,16 +35,17 @@
 	          	</ul>
 
 	          <p><b>Services offered</b></p>
+                <ul>
                 {% for service in servicesOffered %}
-	          	<ul>
 	          		<li>{{ service }}</li>
                 {% endfor %}
 	          	</ul>	    
       
 	          <p><b>Services wanted</b></p>
 	          	<ul>
-	          		<li>Wash my laundry</li>
-
+                {% for service in servicesWanted %}
+	          		<li>{{ service }}</li>
+                {% endfor %}
 	          	</ul>	          
 	        </div>
 {% endblock body %}

@@ -71,13 +71,15 @@
               <li class="active"><a href="/">Home</a></li>
               {% if user.is_authenticated %}<li><a href="/admin">Admin</a></li>
               {% endif %}
+              <li><a href="/edit">Edit your profile</a></li>
+              <li><a href="/profile/{{ user.pk }}">View your profile</a></li>
               
             </ul>
 
 
     </div>
           <form class="navbar-search pull-left" action="/search" method="get">  
-            <input type="text" class="search-query" placeholder="Search" name="q" value="{{SEARCH_VAL}}">  
+            <input type="text" class="search-query" placeholder="Search" name="q" value="{{q}}">  
           </form>  
         </div>
       </div>

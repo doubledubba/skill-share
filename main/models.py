@@ -4,9 +4,8 @@ from django.db.models.signals import post_save
 
 class Service(models.Model):
     name = models.CharField(max_length=255)
-    description = models.CharField(max_length=255)
+    description = models.TextField()
     category = models.CharField(max_length=255)
-    fulfilled = models.BooleanField(default=False)
 
     def __unicode__(self):
         return self.name
@@ -22,6 +21,9 @@ class UserProfile(models.Model):
     skillsLearn = models.CommaSeparatedIntegerField(max_length=255, null=True, blank=True)
     servicesOffered = models.CommaSeparatedIntegerField(max_length=255, null=True, blank=True)
     servicesWanted = models.CommaSeparatedIntegerField(max_length=255, null=True, blank=True)
+
+    city = models.CharField(max_length=80)
+    phone = models.CharField(max_length=11)
 
     def __unicode__(self):
         return self.user.username

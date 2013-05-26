@@ -69,7 +69,12 @@
           <div class="nav-collapse">
             <ul class="nav" role="navigation">
               <li class="active"><a href="/">Home</a></li>
-              {% if user.is_authenticated %}<li><a href="/admin">Admin</a></li>
+              {% if user.is_authenticated %}
+              {% if user.is_staff %}
+              <li><a href="/admin">Admin</a></li>
+              {% endif %}
+              <li><a href="/edit">Edit your profile</a></li>
+              <li><a href="/profile/{{ user.pk }}">View your profile</a></li>
               {% endif %}
               
             </ul>
