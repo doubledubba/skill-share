@@ -3,26 +3,85 @@
 {% block title %}Skill Share{% endblock title %}
 
 {% block body %}
+
+{% if green %}
 <h1>Welcome!</h1>
-<p>You can edit stuff here</p>
+<p>I see you haven't set up your account yet. You've come to the right place.</p>
+{% endif %}
 
-<form action="/edit" method="post">
-  Search: <input type="text" name="skillsTeach"><br>
-  <input type="submit" value="Submit">
-</form>
 
-<form action="/edit" method="post">
-  Search: <input type="text" name="skillsLearn"><br>
-  <input type="submit" value="Submit">
-</form>
+<div class="tabbable">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Add services</a></li>
+        
+        <li><a href="#tab2" data-toggle="tab">Remove services</a></li>
+        
+        
+        
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+            <h3>Add services</h3>
 
-<form action="/edit" method="post">
-  Search: <input type="text" name="servicesOffered"><br>
-  <input type="submit" value="Submit">
-</form>
+            <form method="POST" action="/edit">
+        </div>
 
-<form action="/edit" method="post">
-  Search: <input type="text" name="servicesWanted"><br>
-  <input type="submit" value="Submit">
-</form>
+        
+        <div class="tab-pane" id="tab2">
+            <h3>Remove services</h3>
+
+
+            <form method="POST" action="/edit">
+                <input type='hidden' name='csrfmiddlewaretoken' value='{{CSRF_TOKEN}}' />
+                <select name="skillsTeachRemove">
+                    {% for service in skillsTeach %}
+                    <option value="{{ service.pk }}">{{ service.name }}</option>
+                    {% endfor %}
+                </select>
+                <br/>
+                <button type="submit" class="btn">Remove</button>
+            </form>
+
+
+            <form method="POST" action="/edit">
+                <input type='hidden' name='csrfmiddlewaretoken' value='{{CSRF_TOKEN}}' />
+                <select name="skillsTeachRemove">
+                    {% for service in skillsLearn %}
+                    <option value="{{ service.pk }}">{{ service.name }}</option>
+                    {% endfor %}
+                </select>
+                <br/>
+                <button type="submit" class="btn">Remove</button>
+            </form>
+
+
+            <form method="POST" action="/edit">
+                <input type='hidden' name='csrfmiddlewaretoken' value='{{CSRF_TOKEN}}' />
+                <select name="skillsTeachRemove">
+                    {% for service in servicesOffered %}
+                    <option value="{{ service.pk }}">{{ service.name }}</option>
+                    {% endfor %}
+                </select>
+                <br/>
+                <button type="submit" class="btn">Remove</button>
+            </form>
+
+
+            <form method="POST" action="/edit">
+                <input type='hidden' name='csrfmiddlewaretoken' value='{{CSRF_TOKEN}}' />
+                <select name="skillsTeachRemove">
+                    {% for service in servicesWanted %}
+                    <option value="{{ service.pk }}">{{ service.name }}</option>
+                    {% endfor %}
+                </select>
+                <br/>
+                <button type="submit" class="btn">Remove</button>
+            </form>
+
+         
+        </div>
+
+
+
+{{data}}
 {% endblock body %}

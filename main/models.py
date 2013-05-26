@@ -22,8 +22,6 @@ class UserProfile(models.Model):
     servicesOffered = models.CommaSeparatedIntegerField(max_length=255, null=True, blank=True)
     servicesWanted = models.CommaSeparatedIntegerField(max_length=255, null=True, blank=True)
 
-
-
     def __unicode__(self):
         return self.user.username
 
@@ -60,6 +58,13 @@ class UserProfile(models.Model):
             except Service.DoesNotExist:
                 pass
         return skills
+
+    def isGreen(self):
+        green = not self.skillsTeach
+        green = green and not self.skillsLearn
+        green = green and not self.servicesOffered
+        green = green and not self.servicesWanted
+        return green
 
 
 def create_user_profile(sender, instance, created, **kwargs):

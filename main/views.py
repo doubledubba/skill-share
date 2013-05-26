@@ -46,6 +46,8 @@ from django.views.decorators.csrf import csrf_exempt
 from main.models import Service, UserProfile
 
 def home(request):
+    if request.user.is_authenticated and request.user.get_profile().isGreen():
+        return HttpResponse('hey greeny')
     return render(request, 'home.html')
 
 def profile_view(request, uid):
@@ -94,6 +96,28 @@ def edit_view(request):
             servicesOffered = request.POST['servicesOffered']
         if 'servicesWanted' in request.POST:
             servicesWanted = request.POST['servicesWanted']
+
+        if 'skillsTeachRemove' in request.POST:
+            pk = request.POST['skillsTeachRemove']
+            service = Service.objects.get(pk=pk)
+            service.delete()
+        if 'skillsLearnRemove' in request.POST:
+            pk = request.POST['skillsLearnRemove']
+            service = Service.objects.get(pk=pk)
+            service.delete()
+        if 'servicesOfferedRemove' in request.POST:
+            pk = request.POST['servicesOfferedRemove']
+            service = Service.objects.get(pk=pk)
+            service.delete()
+        if 'servicesWantedRemove' in request.POST:
+            pk = request.POST['servicesWantedRemove']
+            service = Service.objects.get(pk=pk)
+            service.delete()
+
+    params['skillsTeach'] = user.getObjects(user.skillsTeach)
+    params['skillsLearn'] = user.getObjects(user.skillsLearn)
+    params['servicesOffered'] = user.getObjects(user.servicesOffered)
+    params['servicesWanted'] = user.getObjects(user.servicesWanted)
     return render(request, 'edit.html', params)
 
 def service_view(request, sid):
