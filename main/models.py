@@ -11,6 +11,8 @@ class Service(models.Model):
     def __unicode__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return '/service/%d' % self.pk
 
 
 class UserProfile(models.Model):

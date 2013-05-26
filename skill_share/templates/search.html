@@ -3,9 +3,14 @@
 {% block title %}Skill Share{% endblock title %}
 
 {% block body %}
-<h1>Search results page</h1>
-Searched for: {{ q }} 
+<h3>Found {{ n }} results in {{ latency }} seconds</h3>
 
-{{ results }}
+<hr size=20 noshade="noshade">
+{% for entry in results %}
+<a href="{{ entry.get_absolute_url }}">
+{{entry}}
+</a> {{ entry.description }}
+<hr size=10 noshade="noshade">
+{%endfor%}
 
 {% endblock body %}
